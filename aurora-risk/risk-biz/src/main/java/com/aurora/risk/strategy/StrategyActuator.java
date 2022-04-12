@@ -107,7 +107,7 @@ public class StrategyActuator {
      * @return boolean
      * @author Nick
      * @date 2022/04/12
-    */
+     */
     public boolean hasReviewStrategy(StrategyLink strategyLink) {
         if (strategyLink == null) {
             return false;
@@ -280,7 +280,7 @@ public class StrategyActuator {
             return true;
         }
         //若当前节点规则执行状态为DONE 并且下一个节点不为null则递归检查下一个节点
-        return checkRulesIsAllReady(ruleLink);
+        return checkRulesIsAllReady(ruleLink.getNext());
     }
 
     /**

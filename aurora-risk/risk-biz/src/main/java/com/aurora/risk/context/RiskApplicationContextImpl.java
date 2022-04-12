@@ -217,12 +217,12 @@ public class RiskApplicationContextImpl implements RiskApplicationContext {
         //若当前策略下规则链第一个规则不是异步则递归判断此规则链的后续节点
         if (ruleLink.getNext() != null) {
             //查看规则链中是否有规则为异步规则 有则返回true
-            if (hasAsyncRule(ruleLink)) {
+            if (hasAsyncRule(ruleLink.getNext())) {
                 return true;
             }
             //当前规则链中无异步规则 则递归策略链查看其他策略下规则链
             if (strategyLink.getNext() != null) {
-                return hasAsyncRule(strategyLink);
+                return hasAsyncRule(strategyLink.getNext());
             }
         }
         return false;
@@ -243,7 +243,7 @@ public class RiskApplicationContextImpl implements RiskApplicationContext {
         }
         //当前节点不是异步规则 则递归查看下一个节点
         if (ruleLink.getNext() != null) {
-            return hasAsyncRule(ruleLink);
+            return hasAsyncRule(ruleLink.getNext());
         }
         return false;
     }
