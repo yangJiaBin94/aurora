@@ -1,0 +1,16 @@
+package com.aurora.risk.base.mapper;
+
+import com.aurora.risk.base.model.RiskMerchant;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+/**
+ * <p>
+ * 商户 Mapper 接口
+ * </p>
+ *
+ * @author Nick
+ * @since 2022-04-06
+ */
+public interface RiskMerchantMapper extends BaseMapper<RiskMerchant> {
+
+}

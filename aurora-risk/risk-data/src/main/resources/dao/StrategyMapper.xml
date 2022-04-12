@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aurora.risk.mapper.StrategyMapper">
+
+    <select id="getRiskStrategyListBySceneNo" parameterType="String" resultType="com.aurora.risk.base.model.RiskStrategy">
+        select * from risk_scene_strategy ss left join risk_strategy s on ss.strategy_id = s.id where ss.is_delete =0 and ss.scene_no = #{sceneNo} order by ss.strategy_order
+    </select>
+
+
+    <select id="getRiskStrategyListByAbtestId" parameterType="Long" resultType="com.aurora.risk.base.model.RiskStrategy">
+        select * from risk_abtest_strategy a left join risk_strategy s on a.strategy_id = s.id where a.is_delete =0 and a.id = #{abtestId} order by a.strategy_order
+    </select>
+
+</mapper>

@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 10
+      min-idle: 5
+      max-active: 2000
+      max-wait: -1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 25200000
+      validation-query: SELECT 1
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      remove-abandoned: true
+      remove-abandoned-timeout: 1800
+      log-abandoned: true
+      filter:
+        slf4j:
+          enabled: true
+        stat:
+          db-type: mysql
+          log-slow-sql: true
+          merge-sql: true
+          slow-sql-millis: 6000
+        wall:
+          config:
+            delete-allow: true
+            drop-table-allow: false
+          enabled: true
+        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall
+      stat-view-servlet:
+        enabled: true
+        login-password: kexzi47j3KFeRHEQ
+        login-username: admin
+        reset-enable: true
+        url-pattern: /druid/*
+        # 合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+      web-stat-filter:
+        enabled: true
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+        principal-session-name: user
+        profile-enable: true
+        session-stat-enable: true
+        session-stat-max-count: 10
+        url-pattern: /*

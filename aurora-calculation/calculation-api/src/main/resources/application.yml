@@ -1,0 +1,23 @@
+server:
+  port: 7072
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+
+spring:
+  profiles:
+    active: dev
+    include: druid
+  application:
+    name: calculation-api
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 20MB
+
+mybatis-plus:
+  mapper-locations: classpath:**/mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

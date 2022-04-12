@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aurora.risk.base.mapper.RiskOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aurora.risk.base.model.RiskOrder">
+        <id column="id" property="id" />
+        <result column="merchant_no" property="merchantNo" />
+        <result column="app_no" property="appNo" />
+        <result column="mer_order_no" property="merOrderNo" />
+        <result column="risk_order_no" property="riskOrderNo" />
+        <result column="is_async" property="isAsync" />
+        <result column="callback_url" property="callbackUrl" />
+        <result column="order_status" property="orderStatus" />
+        <result column="scene_name" property="sceneName" />
+        <result column="scene_no" property="sceneNo" />
+        <result column="scene_version" property="sceneVersion" />
+        <result column="run_time" property="runTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, merchant_no, app_no, mer_order_no, risk_order_no, is_async, callback_url, order_status, scene_name, scene_no, scene_version, run_time, update_time, create_time
+    </sql>
+
+</mapper>

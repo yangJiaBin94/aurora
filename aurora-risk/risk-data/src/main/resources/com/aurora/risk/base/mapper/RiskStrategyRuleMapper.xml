@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aurora.risk.base.mapper.RiskStrategyRuleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aurora.risk.base.model.RiskStrategyRule">
+        <id column="id" property="id" />
+        <result column="strategy_id" property="strategyId" />
+        <result column="strategy_no" property="strategyNo" />
+        <result column="rule_id" property="ruleId" />
+        <result column="rule_no" property="ruleNo" />
+        <result column="rule_order" property="ruleOrder" />
+        <result column="rule_status" property="ruleStatus" />
+        <result column="add_operator_id" property="addOperatorId" />
+        <result column="add_operator_name" property="addOperatorName" />
+        <result column="update_operator_id" property="updateOperatorId" />
+        <result column="update_operator_name" property="updateOperatorName" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+        <result column="is_delete" property="isDelete" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, strategy_id, strategy_no, rule_id, rule_no, rule_order, rule_status, add_operator_id, add_operator_name, update_operator_id, update_operator_name, update_time, create_time, is_delete
+    </sql>
+
+</mapper>

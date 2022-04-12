@@ -1,0 +1,32 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: gateway-server
+
+  redis:
+    timeout: 10000 #链接超时时间
+    host: localhost
+    port: 6379
+    password: ziyue.wang
+    database: 0
+    lettuce:
+      pool:
+        max-active: 1024 #最大连接数
+        max-wait: 1000 #最大连接阻塞等待时间（毫秒）
+        max-idle: 200 #最大控线连接
+        min-idle: 5 #最小空闲链接
+
+    cloud:
+      sentinel:
+        filter:
+          enabled: false
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url: #服务注册中心的配置内容，指定服务注册中心的位置
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
