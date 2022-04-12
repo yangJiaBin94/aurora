@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author: Nick
  * @create: 2022-03-10 13:59
  **/
-@FeignClient(name = "gateway-server", fallbackFactory = CalculationIndexServiceFallbackFactory.class)
+@FeignClient(contextId = "calculation", name = "gateway-server", fallbackFactory = CalculationIndexServiceFallbackFactory.class)
 public interface CalculationIndexService {
 
     /**
@@ -22,7 +22,7 @@ public interface CalculationIndexService {
      * @return com.aurora.common.response.BaseResponse
      * @author Nick
      * @date 2022/03/10
-    */
+     */
     @PostMapping("calculation/index/getIndex")
     BaseResponse<GetIndexResponse> getIndex(@RequestBody GetIndexRequest request);
 

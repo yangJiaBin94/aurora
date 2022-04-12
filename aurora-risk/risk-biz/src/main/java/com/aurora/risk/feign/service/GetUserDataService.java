@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author: Nick
  * @create: 2022-03-10 13:59
  **/
-@FeignClient(name = "gateway-server", fallbackFactory = GetUserDataServiceFallbackFactory.class)
+@FeignClient(contextId = "data", name = "gateway-server", fallbackFactory = GetUserDataServiceFallbackFactory.class)
 public interface GetUserDataService {
 
     /**
@@ -22,7 +22,7 @@ public interface GetUserDataService {
      * @return com.aurora.common.response.BaseResponse
      * @author Nick
      * @date 2022/03/10
-    */
+     */
     @PostMapping("data/provide/user/base")
     BaseResponse<UserBaseInfoProvideResponse> getUserBaseInfo(@RequestBody UserBaseInfoProvideRequest request);
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author: Nick
  * @create: 2022-03-10 13:59
  **/
-@FeignClient(name = "gateway-server", fallbackFactory = LoanApiCallBackServiceFallbackFactory.class)
+@FeignClient(contextId = "loan", name = "gateway-server", fallbackFactory = LoanApiCallBackServiceFallbackFactory.class)
 public interface LoanApiCallBackService {
 
     /**
@@ -21,7 +21,7 @@ public interface LoanApiCallBackService {
      * @return com.aurora.common.response.BaseResponse
      * @author Nick
      * @date 2022/03/10
-    */
+     */
     @PostMapping("loan/api/callBack/riskCallBack/v1")
     BaseResponse loanApiCallBack(@RequestBody LoanApiCallBackRequest request);
 }
