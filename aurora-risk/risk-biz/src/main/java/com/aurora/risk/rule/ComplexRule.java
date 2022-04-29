@@ -47,7 +47,9 @@ public class ComplexRule extends AbstractRule {
     @Override
     void getIndexValue(RiskContextInfo riskContextInfo) {
         //复杂规则获取结果判断依据的value为子规则的结果，所以此方法调用其子规则的execute()
+        addStrategyNoToRuleLink(simpleRuleLink);
         simpleRuleLink.execute(riskContextInfo);
+
     }
 
     @Override
@@ -112,6 +114,20 @@ public class ComplexRule extends AbstractRule {
         this.setResult(result);
     }
 
+    /**
+     * 设置规则所属策略编号
+     *
+     * @param ruleLink : ruleLink
+     * @return void
+     * @author Nick
+     * @date 2022/04/06
+     */
+    void addStrategyNoToRuleLink(AbstractRule ruleLink) {
+        if (ruleLink != null) {
+            ruleLink.setStrategyNo(this.getStrategyNo());
+            addStrategyNoToRuleLink(ruleLink.getNext());
+        }
+    }
 
     /**
      * 获取所有子规则评分分数和

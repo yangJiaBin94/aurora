@@ -4,12 +4,14 @@ import com.aurora.calculation.enums.IndexExecuteStatusEnum;
 import com.aurora.calculation.enums.RecalculateTimeType;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author: Nick
  * @create: 2022-04-07 16:14
  **/
 @Data
-public class IndexInfo {
+public class IndexInfo implements Serializable {
 
     /**
      * 指标执行器类名

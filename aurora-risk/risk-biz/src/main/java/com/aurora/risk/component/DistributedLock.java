@@ -1,11 +1,11 @@
 package com.aurora.risk.component;
 
 import com.aurora.risk.constant.RedisConstant;
+import com.aurora.risk.util.BeanUtil;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,9 +14,6 @@ import java.util.concurrent.TimeUnit;
  **/
 @Component
 public class DistributedLock {
-
-    @Resource
-    private RedissonClient redissonClient;
 
     /**
      * 获取锁
@@ -27,6 +24,7 @@ public class DistributedLock {
      * @return 锁
      */
     public RLock tryLock(String key, long leaseTime, long waitTime) {
+        RedissonClient redissonClient = BeanUtil.getBean(RedissonClient.class);
         try {
             RLock lock = redissonClient.getLock(RedisConstant.LOCK_KEY_PREFIX + key);
             return lock.tryLock(waitTime, leaseTime, TimeUnit.SECONDS) ? lock : null;

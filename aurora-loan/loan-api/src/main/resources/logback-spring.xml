@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+配置文件详解
+一个完整的logback配置文件由三部分组成，如下所示：
+appender 负责写日志的组件，对日志的输出格式以及滚动规则进行配置
+logger 用来设置某一个包或者具体的某一个类的日志打印级别、以及指定appender
+root 根logger,可以包含零个或多个appender-ref元素，表示这个appender将会添加到这个logger
+-->
+
+<configuration>
+    <!-- 定义变量值 -->
+    <property name="appName" value="api"/>
+    <property name="logHome" value="./data/logs/loan"/>
+    <!-- 控制台 appender -->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <!--设置输出格式-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{tradeId}] [%thread] %-5level %logger - %msg%n</pattern>
+            <!--设置编码-->
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--文件输出,时间窗口滚动-->
+    <appender name="defaultAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志名,指定最新的文件名，其他文件名使用FileNamePattern -->
+        <file>${logHome}/${appName}/${appName}.log</file>
+        <!--文件滚动模式-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名,可设置文件类型为gz,开启文件压缩-->
+            <fileNamePattern>${logHome}/${appName}/%d{yyyy-MM-dd,aux}/%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+        </rollingPolicy>
+
+        <!--输出格式-->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{tradeId}] [%thread] %-5level %logger - %msg%n</pattern>
+            <!--设置编码-->
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="com.aurora" level="debug">
+    </logger>
+
+    <springProfile name="local">
+        <root level="info">
+            <appender-ref ref="consoleAppender"/>
+            <appender-ref ref="defaultAppender"/>
+        </root>
+    </springProfile>
+    <springProfile name="dev">
+        <root level="info">
+            <appender-ref ref="consoleAppender"/>
+            <appender-ref ref="defaultAppender"/>
+        </root>
+    </springProfile>
+    <springProfile name="test">
+        <root level="info">
+            <appender-ref ref="consoleAppender"/>
+            <appender-ref ref="defaultAppender"/>
+        </root>
+    </springProfile>
+    <springProfile name="prod">
+        <root level="info">
+            <appender-ref ref="defaultAppender"/>
+        </root>
+    </springProfile>
+</configuration>

@@ -2,6 +2,7 @@ package com.aurora.calculation.context;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * @create: 2022-04-01 10:26
  **/
 @Data
-public class CalculationContextInfo {
+public class CalculationContextInfo implements Serializable {
 
     /**
      * 同步异步获取（指标类name集合中只要有一个异步指标，此字段则必须为true）

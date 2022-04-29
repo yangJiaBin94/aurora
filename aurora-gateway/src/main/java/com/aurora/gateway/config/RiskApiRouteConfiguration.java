@@ -25,6 +25,10 @@ public class RiskApiRouteConfiguration {
                         .path("/loan/**")
                         .uri("lb://loan-api")
                         .id("loan-api"))
+                .route(r -> r
+                        .path("/calculation/**")
+                        .uri("lb://calculation-api")
+                        .id("calculation-api"))
                 .build();
 
     }
