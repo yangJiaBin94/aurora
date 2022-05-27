@@ -62,6 +62,7 @@ public class GatewayConfiguration {
 
     private void initCustomizedApis() {
         Set<ApiDefinition> definitions = new HashSet<>();
+        //定义/risk/verify/** 接口信息匹配策略为URL
         ApiDefinition api1 = new ApiDefinition("risk-api-verify")
                 .setPredicateItems(new HashSet<ApiPredicateItem>() {{
                     add(new ApiPathPredicateItem().setPattern("/risk/verify/**")
@@ -79,6 +80,7 @@ public class GatewayConfiguration {
 
     private void initGatewayRules() {
         Set<GatewayFlowRule> rules = new HashSet<>();
+        //对应定义的接口信息做限流（60秒内最多2次请求）
         rules.add(new GatewayFlowRule("risk-api-verify")
                 .setResourceMode(SentinelGatewayConstants.RESOURCE_MODE_CUSTOM_API_NAME)
                 .setCount(2)

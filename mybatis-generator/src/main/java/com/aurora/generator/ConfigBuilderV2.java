@@ -553,7 +553,7 @@ public class ConfigBuilderV2 {
                         if (DbType.DB2 == dbType) {
                             isId = StringUtils.isNotEmpty(key) && "1".equals(key);
                         } else {
-                            isId = StringUtils.isNotEmpty(key) && "PRI".equals(key.toUpperCase());
+                            isId = StringUtils.isNotEmpty(key) && "PRI".equalsIgnoreCase(key);
                         }
                     }
 

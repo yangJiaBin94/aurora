@@ -37,7 +37,7 @@ public class SnowflakeIdWorker {
     /**
      * 合并了机器ID和数据标示ID，统称业务ID，10位
      */
-    private long workerId;
+    private final long workerId;
 
     /**
      * 毫秒内序列，12位，2^12 = 4096个数字

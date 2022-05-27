@@ -81,8 +81,8 @@ public class SimpleRule extends AbstractRule {
             String code = getIndexResponseBaseResponse.getCode();
             if (code.equals(ResponseEnum.CALCULATION_INDEX_1000.getCode())) {
                 //解锁
-                distributedLock.unLock(lock);
                 this.setExecuteStatus(RuleExecuteStatusEnum.GETTING);
+                distributedLock.unLock(lock);
             } else if (code.equals(ResponseEnum.SUCCESS.getCode())) {
                 //获取到了指标
                 GetIndexResponse data = getIndexResponseBaseResponse.getData();
@@ -94,10 +94,10 @@ public class SimpleRule extends AbstractRule {
                 //先将指标放入缓存
                 Map<String, String> indexMap = data.getIndexMap();
                 indexCatch.putAll(indexMap);
-                //解锁
-                distributedLock.unLock(lock);
                 //装载规则value
                 this.setValue(indexMap.get(this.getDataClass()));
+                //解锁
+                distributedLock.unLock(lock);
             } else {
                 //解锁
                 distributedLock.unLock(lock);
