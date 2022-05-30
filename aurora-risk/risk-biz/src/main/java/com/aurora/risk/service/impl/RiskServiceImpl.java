@@ -24,7 +24,7 @@ public class RiskServiceImpl implements RiskService {
 
     @Override
     public RiskResult risk(RiskContextInfo riskContextInfo) {
-        //校验
+        //初始化前校验
         riskApplicationContext.verifyBefore(riskContextInfo);
         //初始化
         riskApplicationContext.init(riskContextInfo);

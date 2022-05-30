@@ -33,6 +33,7 @@ public class IndexCallBackController {
     @PostMapping("/receiveIndex")
     @ResponseBody
     public BaseResponse receiveIndex(@RequestBody ReceiveIndexRequest request) {
+        //从redis中获取风控上下文信息
         RiskContextInfo riskContextInfo = riskApplicationContext.getRiskContextInfoIntoRedis(request.getRiskOrderNo());
         //获取此指标规则所在的策略节点
         StrategyLink strategyNode = strategyActuator.getStrategyNode(riskContextInfo.getStrategyLink(), request.getStrategyNo());
