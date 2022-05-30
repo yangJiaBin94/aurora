@@ -184,8 +184,7 @@ public class StrategyActuator {
      * @date 2022/03/30
      */
     public void executeAsync(RiskContextInfo riskContextInfo, StrategyLink strategyLink) {
-        doNext(riskContextInfo, strategyLink);
-        doThis(riskContextInfo, strategyLink, null);
+        executeAsync(riskContextInfo, strategyLink, null);
     }
 
     /**
