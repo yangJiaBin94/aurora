@@ -249,7 +249,7 @@ public class RiskApplicationContextImpl implements RiskApplicationContext {
     }
 
     @Override
-    public void init(RiskContextInfo riskContextInfo) {
+    public void prepareEnvironment(RiskContextInfo riskContextInfo) {
         initOrder(riskContextInfo);
         buildStrategyLink(riskContextInfo);
     }

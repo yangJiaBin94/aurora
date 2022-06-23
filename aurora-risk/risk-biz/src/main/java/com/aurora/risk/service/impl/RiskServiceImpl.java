@@ -27,7 +27,7 @@ public class RiskServiceImpl implements RiskService {
         //初始化前校验
         riskApplicationContext.verifyBefore(riskContextInfo);
         //初始化
-        riskApplicationContext.init(riskContextInfo);
+        riskApplicationContext.prepareEnvironment(riskContextInfo);
         //初始化后校验
         riskApplicationContext.verifyAfter(riskContextInfo);
         //执行

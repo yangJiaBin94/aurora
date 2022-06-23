@@ -19,7 +19,7 @@ public interface RiskApplicationContext {
      * @author Nick
      * @date 2022/03/29
      */
-    void init(RiskContextInfo riskContextInfo);
+    void prepareEnvironment(RiskContextInfo riskContextInfo);
 
     /**
      * 初始化前校验

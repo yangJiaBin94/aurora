@@ -90,7 +90,7 @@ public abstract class AbstractIndexActuator implements IndexActuator {
      */
     public String tryToGetIndexValue(CalculationContextInfo contextInfo, IndexExecuteStatusEnum executeStatusEnum) {
         //已执行完成的指标不再获取
-        if (!IndexExecuteStatusEnum.DONE.equals(executeStatusEnum)) {
+        if (IndexExecuteStatusEnum.DONE.equals(executeStatusEnum)) {
             return null;
         }
         //从缓存尝试获取
