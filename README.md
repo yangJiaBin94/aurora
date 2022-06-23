@@ -365,5 +365,5 @@ if (contextInfo.getIsAsync()) {
 
 ##### [异步指标回调接收接口流程图链接](draw/receiveIndex.png)
 
-
+##### [mysql表结构及相关测试数据链接](draw/aurora_risk.sql)
 
